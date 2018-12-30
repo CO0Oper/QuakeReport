@@ -21,17 +21,17 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference minMagnitude = findPreference(getString(R.string.settings_min_magnitude_key));
+            Preference minMagnitude = findPreference(getString(R.string.settings_min_magnitude_key));//Adding OnPreferenceChange 
             bindPreferenceSummaryToValue(minMagnitude);
         }
         @Override
-        public boolean onPreferenceChange(Preference preference, Object value) {
+        public boolean onPreferenceChange(Preference preference, Object value) {//Adding OnPreferenceChange 
             String stringValue = value.toString();
             preference.setSummary(stringValue);
             return true;
         }
 
-        private void bindPreferenceSummaryToValue(Preference preference) {
+        private void bindPreferenceSummaryToValue(Preference preference) {//Adding OnPreferenceChange 
             preference.setOnPreferenceChangeListener(this);
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
             String preferenceString = preferences.getString(preference.getKey(), "");
