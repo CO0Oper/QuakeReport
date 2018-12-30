@@ -22,14 +22,14 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference minMagnitude = findPreference(getString(R.string.settings_min_magnitude_key));
+            Preference minMagnitude = findPreference(getString(R.string.settings_min_magnitude_key));//Adding OnPreferenceChange 
             bindPreferenceSummaryToValue(minMagnitude);
 
             Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
             bindPreferenceSummaryToValue(orderBy);
         }
         @Override
-        public boolean onPreferenceChange(Preference preference, Object value) {
+        public boolean onPreferenceChange(Preference preference, Object value) {//Adding OnPreferenceChange 
             String stringValue = value.toString();
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
@@ -44,7 +44,7 @@ public class SettingsActivity extends AppCompatActivity {
             return true;
         }
 
-        private void bindPreferenceSummaryToValue(Preference preference) {
+        private void bindPreferenceSummaryToValue(Preference preference) {//Adding OnPreferenceChange 
             preference.setOnPreferenceChangeListener(this);
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
             String preferenceString = preferences.getString(preference.getKey(), "");
